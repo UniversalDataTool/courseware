@@ -11,10 +11,14 @@
     "chroma-js": "^2.1.0",
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^6.0.0",
+    "micro": "^9.3.4",
+    "micro-query": "^0.3.0",
+    "pgknexlove": "^1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.7.0",
     "react-markdown": "^4.3.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "recoil": "^0.0.10",
     "universal-data-tool": "^0.11.3"
@@ -22,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "ava tests/**.test.js",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -50,7 +54,11 @@
     "@storybook/node-logger": "^6.0.6",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.6",
+    "ava": "^3.11.1",
     "babel-loader": "^8.1.0",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "test-listen": "^1.1.0"
   }
 }
