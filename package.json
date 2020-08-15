@@ -3,18 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "chroma-js": "^2.1.0",
+    "i18next": "^19.6.3",
+    "i18next-browser-languagedetector": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-i18next": "^11.7.0",
+    "react-markdown": "^4.3.1",
+    "react-scripts": "3.4.3",
+    "recoil": "^0.0.10",
+    "universal-data-tool": "^0.11.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +41,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@storybook/addon-actions": "^6.0.6",
+    "@storybook/addon-essentials": "^6.0.6",
+    "@storybook/addon-links": "^6.0.6",
+    "@storybook/node-logger": "^6.0.6",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.6",
+    "babel-loader": "^8.1.0",
+    "react-is": "^16.13.1"
   }
 }
