@@ -1,7 +1,7 @@
-# Universal Data Tool Courses
+# Universal Data Tool Courseware
 
 Dataset annotators often need extensive instructions to understand how to label
-or annotate a dataset. Universal Data Tool Training allows you to quickly create
+or annotate a dataset. Universal Data Tool Courseware allows you to quickly create
 training for annotators with dataset-specific instructions and exercises. You can
 use it online at [courses.universaldatatool.com](https://courses.universaldatatool.com).
 
