@@ -35,6 +35,7 @@ vc dev
 | Page URL                                   | Description                                  |
 | ------------------------------------------ | -------------------------------------------- |
 | `/`                                        | Landing Page                                 |
+| `/create`                                  | Create Course / Upload UDT File              |
 | `/course/[course_id]`                      | Take a course                                |
 | `/course/[course_id]/edit?editKey=XXX`     | Edit a course                                |
 | `/course/[course_id]/students?editKey=XXX` | View students that have completed the course |
@@ -48,7 +49,7 @@ The following endpoints are used for accessing data.
 | `GET /api/course/[course_id]`          | Get JSON for a course                           |                                        |
 | `PUT /api/course/[course_id]`          | Update course                                   | `{ dataset }` `Authorization: editKey` |
 | `POST /api/course`                     | Create new course                               | `{ dataset }`                          |
-| `POST /api/course/[course_id]/submit`  | Finish the course (submit results)              | `{ contact_info }`         |
+| `POST /api/course/[course_id]/submit`  | Finish the course (submit results)              | `{ contact_info }`                     |
 | `GET /api/course/[course_id]/students` | Get the students that have completed the course | `Authorization: editKey`               |
 
 ### Environment Variables

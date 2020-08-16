@@ -1,9 +1,44 @@
 import React from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import Theme from "universal-data-tool/components/Theme"
+import { RecoilRoot } from "recoil"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import LandingPage from "./components/LandingPage"
+import CoursePage from "./components/CoursePage"
+import CreatePage from "./components/CreatePage"
+import EditCoursePage from "./components/EditCoursePage"
 
 function App() {
-  return <div className="App"></div>
+  return (
+    <Theme>
+      <RecoilRoot>
+        <Router>
+          <Switch>
+            <Route exact path={["/", "/courses"]}>
+              <LandingPage />
+            </Route>
+            <Route exact path={["/create", "/courses/create"]}>
+              <CreatePage />
+            </Route>
+            <Route
+              exact
+              path={["/course/:course_id", "/courses/course/:course_id"]}
+            >
+              <CoursePage />
+            </Route>
+            <Route
+              exact
+              path={[
+                "/course/:course_id/edit",
+                "/courses/course/:course_id/edit",
+              ]}
+            >
+              <EditCoursePage />
+            </Route>
+          </Switch>
+        </Router>
+      </RecoilRoot>
+    </Theme>
+  )
 }
 
 export default App
