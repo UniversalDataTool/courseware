@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useMemo, Fragment, memo } from "react"
 import CenteredContent from "../CenteredContent"
 import {
   styled,
@@ -18,6 +18,8 @@ import {
   Close as CloseIcon,
 } from "@material-ui/icons"
 import CourseItem from "../CourseItem"
+import { from as makeImmutable, setIn } from "seamless-immutable"
+import MarkdownEditor from "../MarkdownEditor"
 
 const innerContentStyle = {
   display: "flex",
@@ -55,33 +57,47 @@ const ItemEditContainer = styled(Paper)({
   marginTop: 32,
 })
 
-const EditItem = ({ item }) => {
-  const [currentTab, setTab] = useState(1)
-  return (
-    <ItemEditContainer>
-      <Box width="100%" display="flex">
-        <Tabs value={currentTab} onChange={(e, ti) => setTab(ti)}>
-          <Tab label="Edit" />
-          <Tab label="Preview" />
-        </Tabs>
-        <Box flexGrow={1} textAlign="right">
-          <IconButton>
-            <KeyboardArrowDownIcon />
-          </IconButton>
-          <IconButton>
-            <KeyboardArrowUpIcon />
-          </IconButton>
-          <IconButton>
-            <CloseIcon />
-          </IconButton>
+const EditItem = memo(
+  ({ item, onChange }) => {
+    const [currentTab, setTab] = useState(1)
+    return (
+      <ItemEditContainer>
+        <Box width="100%" display="flex">
+          <Tabs value={currentTab} onChange={(e, ti) => setTab(ti)}>
+            <Tab label="Edit" />
+            <Tab label="Preview" />
+          </Tabs>
+          <Box flexGrow={1} textAlign="right">
+            <IconButton>
+              <KeyboardArrowDownIcon />
+            </IconButton>
+            <IconButton>
+              <KeyboardArrowUpIcon />
+            </IconButton>
+            <IconButton>
+              <CloseIcon />
+            </IconButton>
+          </Box>
         </Box>
-      </Box>
-      <Box marginTop={2}>{currentTab === 1 && <CourseItem {...item} />}</Box>
-    </ItemEditContainer>
-  )
-}
+        <Box marginTop={2}>
+          {currentTab === 0 && item.markdown && (
+            <MarkdownEditor
+              value={item.markdown}
+              onChange={(markdown) => onChange({ markdown })}
+            />
+          )}
+          {currentTab === 1 && <CourseItem {...item} />}
+        </Box>
+      </ItemEditContainer>
+    )
+  },
+  (prev, next) => {
+    return prev.item === next.item
+  }
+)
 
-export const CourseEditor = ({ dataset, onChangeDataset }) => {
+export const CourseEditor = ({ dataset: datasetProp, onChangeDataset }) => {
+  const [dataset, setDataset] = useState(makeImmutable(datasetProp))
   const {
     training: { sections, title: courseTitle } = {
       sections: [],
@@ -97,7 +113,7 @@ export const CourseEditor = ({ dataset, onChangeDataset }) => {
         </PageOrSectionEditContainer>
         {sections.map((section, sectionIndex) => {
           return (
-            <>
+            <Fragment key={sectionIndex}>
               <SectionBuffer>
                 Section {sectionIndex + 1}: {section.name}
               </SectionBuffer>
@@ -115,10 +131,27 @@ export const CourseEditor = ({ dataset, onChangeDataset }) => {
                   </IconButton>
                 </Box>
               </PageOrSectionEditContainer>
-              {(section.items || []).map((item, i) => (
-                <EditItem key={i} item={item} />
+              {(section.items || []).map((item, itemIndex) => (
+                <EditItem
+                  key={itemIndex}
+                  item={item}
+                  onChange={(newValue) => {
+                    setDataset(
+                      dataset.setIn(
+                        [
+                          "training",
+                          "sections",
+                          sectionIndex,
+                          "items",
+                          itemIndex,
+                        ],
+                        newValue
+                      )
+                    )
+                  }}
+                />
               ))}
-            </>
+            </Fragment>
           )
         })}
       </CenteredContent>

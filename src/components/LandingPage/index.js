@@ -160,11 +160,11 @@ const LandingPage = () => {
               </li>
               <li>Private Course URLs</li>
               <li>
-                View anyone who has completed course with a special
-                administrator link
+                View anyone who has completed a course with a special
+                administrator link/key
               </li>
               <li>
-                Programmatically query to see if user has completed course
+                Programmatically query to see users that completed a course
               </li>
               <li>
                 Free and open-source!{" "}

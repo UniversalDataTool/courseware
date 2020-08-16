@@ -15365,7 +15365,7 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-markdown@^4.0.6, react-markdown@^4.1.0, react-markdown@^4.3.1:
+react-markdown@^4.0.6, react-markdown@^4.1.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-4.3.1.tgz#39f0633b94a027445b86c9811142d05381300f2f"
   integrity sha512-HQlWFTbDxTtNY6bjgp3C3uv1h2xcjCSi1zAEzfBW9OwJJvENSYiLXWNXN5hHLsoqai7RnZiiHzcnWdXk2Splzw==
@@ -15390,6 +15390,11 @@ react-material-workspace-layout@^0.1.17:
     react "^16.13.1"
     react-use-dimensions "^1.2.1"
     use-event-callback "^0.1.0"
+
+react-mde@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/react-mde/-/react-mde-10.2.1.tgz#6debedbbed224155f5f4c025ae0c1655a41d385c"
+  integrity sha512-rq99Y6xQknZRQSzUpkY5KJRl3cE7GpiC+bSG2L10T2m1p6Y90zQxC060TWk1yoeXtGtveao1NXEV1UcpvOhRsQ==
 
 react-monaco-editor@^0.25.1:
   version "0.25.1"
