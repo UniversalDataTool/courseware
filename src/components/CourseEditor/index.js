@@ -22,6 +22,7 @@ import { from as makeImmutable, setIn } from "seamless-immutable"
 import MarkdownEditor from "../MarkdownEditor"
 import EditSimpleQuestion from "../EditSimpleQuestion"
 import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
+import ConfigureTest from "../ConfigureTest"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 
 const innerContentStyle = {
@@ -118,7 +119,6 @@ const EditItem = memo(
               disableHotkeys
               dataset={item.dataset}
               onSaveTaskOutputItem={(sampleIndex, output) => {
-                console.log({ sampleIndex, output })
                 onChange(
                   item.setIn(
                     ["dataset", "samples", sampleIndex, "annotation"],
@@ -126,6 +126,13 @@ const EditItem = memo(
                   )
                 )
               }}
+            />
+          )}
+          {tabName === "Configure Test" && item.test && (
+            <ConfigureTest
+              test={item.test}
+              dataset={dataset}
+              onChange={(test) => onChange(item.setIn(["test"], test))}
             />
           )}
         </Box>

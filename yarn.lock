@@ -9768,6 +9768,13 @@ hyphenate-style-name@^1.0.2, hyphenate-style-name@^1.0.3:
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
+i18next-browser-languagedetector@^4.2.0:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-4.3.1.tgz#005d2db6204b0a4af5f01c7987f5ccaf4ef97da5"
+  integrity sha512-KIToAzf8zwWvacgnRwJp63ase26o24AuNUlfNVJ5YZAFmdGhsJpmFClxXPuk9rv1FMI4lnc8zLSqgZPEZMrW4g==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+
 i18next-browser-languagedetector@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-6.0.0.tgz#df8ef60bfee7d330c220568cfaee43b591f605c3"
@@ -9775,7 +9782,7 @@ i18next-browser-languagedetector@^6.0.0:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-i18next@^19.6.3:
+i18next@^19.4.4, i18next@^19.6.3:
   version "19.6.3"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.6.3.tgz#ce2346161b35c4c5ab691b0674119c7b349c0817"
   integrity sha512-eYr98kw/C5z6kY21ti745p4IvbOJwY8F2T9tf/Lvy5lFnYRqE45+bppSgMPmcZZqYNT+xO0N0x6rexVR2wtZZQ==
@@ -15209,10 +15216,10 @@ react-draggable@^4.0.3:
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
-react-dropzone@^10.1.8:
-  version "10.2.2"
-  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-10.2.2.tgz#67b4db7459589a42c3b891a82eaf9ade7650b815"
-  integrity sha512-U5EKckXVt6IrEyhMMsgmHQiWTGLudhajPPG77KFSvgsMqNEHSyGpqWvOMc5+DhEah/vH4E1n+J5weBNLd5VtyA==
+react-dropzone@^11.0.3:
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-11.0.3.tgz#59c396a1482454fa78466f8565336f40ce7f7c84"
+  integrity sha512-+MoMOoKZfkZ9i1+qEFl2ZU29AB/c9K2bFxyACqGynguJunmqO+k2PJ2AcuiH51xVNl9R7q/x5QdBaIWb6RtoSw==
   dependencies:
     attr-accept "^2.0.0"
     file-selector "^0.1.12"
@@ -15278,7 +15285,7 @@ react-hotkeys@2.0.0, react-hotkeys@^2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-i18next@^11.7.0:
+react-i18next@^11.4.0, react-i18next@^11.7.0:
   version "11.7.0"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.7.0.tgz#f27c4c237a274e007a48ac1210db83e33719908b"
   integrity sha512-8tvVkpuxQlubcszZON+jmoCgiA9gCZ74OAYli9KChPhETtq8pJsANBTe9KRLRLmX3ubumgvidURWr0VvKz1tww==
@@ -15293,7 +15300,7 @@ react-icons@^3.9.0:
   dependencies:
     camelcase "^5.0.0"
 
-react-image-annotate@^1.5.0:
+react-image-annotate@^1.5.3:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/react-image-annotate/-/react-image-annotate-1.5.5.tgz#3707c881b37c5457068aa2777f1693c902947857"
   integrity sha512-w+qOPwVxl1dL/siLgwbyj1v95SM6GDl4BHiPribH2GUpeRgTq4nBHcgSHH+01sUPZZv1ddqORGCXQya5sOsJ5Q==
@@ -18261,20 +18268,23 @@ unist-util-visit@^1.1.0, unist-util-visit@^1.3.0:
   dependencies:
     unist-util-visit-parents "^2.0.0"
 
-universal-data-tool@^0.11.3:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/universal-data-tool/-/universal-data-tool-0.11.3.tgz#e4268da9f58846b21626f687b3104d3378dd3289"
-  integrity sha512-TWRfgdntF7kw8sc+oh23D4B2wJvXEnZTUR93r99ysZ7RSqMPuIR8URoI9Osfs1iIxGAbEYI8VaW34diQXmI67w==
+universal-data-tool@^0.11.7:
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/universal-data-tool/-/universal-data-tool-0.11.7.tgz#98cbfd8d80d09b2a3af5758a2dfcfd9b9f9a61e8"
+  integrity sha512-ktMfKmI+z2qbAbL/YsWAGmJg8HMi7uTB/UBf10atlwqqT2QI+4fr5oGu97vf8qO7Rurj5xntUNq1aUwO0CKo7Q==
   dependencies:
     "@material-ui/core" "^4.9.5"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/styles" "^4.9.0"
+    i18next "^19.4.4"
+    i18next-browser-languagedetector "^4.2.0"
     material-survey "^1.0.32"
     moment "^2.24.0"
     react "^16.8.6"
-    react-dropzone "^10.1.8"
+    react-dropzone "^11.0.3"
+    react-i18next "^11.4.0"
     react-icons "^3.9.0"
-    react-image-annotate "^1.5.0"
+    react-image-annotate "^1.5.3"
     react-markdown "^4.1.0"
     react-nlp-annotate "^0.1.22"
     react-select "^3.0.8"
