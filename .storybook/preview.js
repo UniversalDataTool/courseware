@@ -1,5 +1,6 @@
 import React from "react"
 import { RecoilRoot } from "recoil"
+import Theme from "universal-data-tool/components/Theme"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,7 +9,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <RecoilRoot>
-      <Story />
+      <Theme>
+        <Story />
+      </Theme>
     </RecoilRoot>
   ),
 ]

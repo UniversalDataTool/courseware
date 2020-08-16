@@ -12,10 +12,10 @@ const Content = styled(Box)(({ theme }) => ({
   maxWidth: 1000,
 }))
 
-export const CenteredContent = ({ children }) => {
+export const CenteredContent = ({ children, contentStyle }) => {
   return (
     <ContentContainer>
-      <Content>{children}</Content>
+      <Content style={contentStyle}>{children}</Content>
     </ContentContainer>
   )
 }

@@ -3,6 +3,22 @@
     "title": "Example Course",
     "sections": [
       {
+        "name": "Introduction",
+        "items": [
+          {
+            "markdown": "# Introduction\n\nCats (or Felis Catus) are a domestic species of a small carnivorous mammal. Cats were domesticated in 7500 BC and are the 2nd most popular pet in the U.S., after freshwater fish.\n\n![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/1280px-Cat_poster_1.jpg)"
+          },
+          {
+            "question": {
+              "type": "radiogroup",
+              "title": "Cats were invented in the year:",
+              "choices": ["1000 BC", "3000 BC", "7500 BC", "10000 BC"]
+            },
+            "answerIndex": 2
+          }
+        ]
+      },
+      {
         "name": "Noses",
         "items": [
           {
@@ -199,22 +215,6 @@
                 }
               ]
             }
-          }
-        ]
-      },
-      {
-        "name": "Introduction",
-        "items": [
-          {
-            "markdown": "# Introduction\n\nCats (or Felis Catus) are a domestic species of a small carnivorous mammal. Cats were domesticated in 7500 BC and are the 2nd most popular pet in the U.S., after freshwater fish.\n\n![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/1280px-Cat_poster_1.jpg)"
-          },
-          {
-            "question": {
-              "type": "radiogroup",
-              "title": "Cats were invented in the year:",
-              "choices": ["1000 BC", "3000 BC", "7500 BC", "10000 BC"]
-            },
-            "answerIndex": 2
           }
         ]
       },

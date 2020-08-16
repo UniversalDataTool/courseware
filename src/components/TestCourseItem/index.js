@@ -2,7 +2,8 @@ import React, { useState, useMemo } from "react"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 import useEventCallback from "use-event-callback"
 import TimeElapsed from "../TimeElapsed"
-import { colors, Button, Box, Paper, styled } from "@material-ui/core"
+import { colors, Button, Box, styled } from "@material-ui/core"
+import StyledPaper from "../StyledPaper"
 
 const TestHeader = styled(Box)({
   flexGrow: 1,
@@ -45,7 +46,7 @@ export const TestCourseItem = ({ test, dataset }) => {
   })
   return (
     <Box marginTop={4} marginBottom={4}>
-      <Paper>
+      <StyledPaper>
         <Box padding={4} display="flex" alignItems="center">
           <TestHeader>
             <div>
@@ -91,7 +92,7 @@ export const TestCourseItem = ({ test, dataset }) => {
             />
           )}
         </Box>
-      </Paper>
+      </StyledPaper>
     </Box>
   )
 }

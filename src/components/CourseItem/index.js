@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { Box, styled, Paper } from "@material-ui/core"
+import { Box, styled } from "@material-ui/core"
 import ReactMarkdown from "react-markdown"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 import RadioGroupQuestion from "material-survey/components/RadiogroupQuestion"
 import QuestionContext from "material-survey/components/QuestionContext"
 import TestCourseItem from "../TestCourseItem"
+import StyledPaper from "../StyledPaper"
 
 const MarkdownBox = styled(Box)({
   fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -44,15 +45,19 @@ export const CourseItem = ({
     }
 
     return (
-      <Paper>
-        <UniversalDataViewer dataset={dataset} onExit={console.log} />
-      </Paper>
+      <StyledPaper>
+        <UniversalDataViewer
+          disableHotkeys
+          dataset={dataset}
+          onExit={console.log}
+        />
+      </StyledPaper>
     )
   }
 
   if (question) {
     return (
-      <Paper>
+      <StyledPaper>
         <Box paddingTop={2} paddingLeft={2}>
           <QuestionContext.Provider
             value={{
@@ -69,7 +74,7 @@ export const CourseItem = ({
             />
           </QuestionContext.Provider>
         </Box>
-      </Paper>
+      </StyledPaper>
     )
   }
 
