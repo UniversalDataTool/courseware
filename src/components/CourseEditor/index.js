@@ -21,6 +21,7 @@ import CourseItem from "../CourseItem"
 import { from as makeImmutable, setIn } from "seamless-immutable"
 import MarkdownEditor from "../MarkdownEditor"
 import EditSimpleQuestion from "../EditSimpleQuestion"
+import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
 
 const innerContentStyle = {
   display: "flex",
@@ -59,17 +60,22 @@ const ItemEditContainer = styled(Paper)({
 })
 
 const EditItem = memo(
-  ({ item, onChange }) => {
+  ({ dataset, item, onChange }) => {
     const [currentTab, setTab] = useState(0)
-    console.log({ currentTab })
+    const tabs = [
+      "Preview",
+      item.dataset && "Select Samples",
+      "Edit",
+      item.test && "Configure Test",
+    ].filter(Boolean)
+    const tabName = tabs[currentTab]
     return (
       <ItemEditContainer>
         <Box width="100%" display="flex">
           <Tabs value={currentTab} onChange={(e, ti) => setTab(ti)}>
-            <Tab label="Preview" />
-            {item.dataset && <Tab label="Select Samples" />}
-            <Tab label="Edit" />
-            {item.test && <Tab label="Configure Test" />}
+            {tabs.map((t) => (
+              <Tab key={t} label={t} />
+            ))}
           </Tabs>
           <Box flexGrow={1} textAlign="right">
             <IconButton>
@@ -84,17 +90,29 @@ const EditItem = memo(
           </Box>
         </Box>
         <Box marginTop={2}>
-          {currentTab === 0 && <CourseItem {...item} />}
-          {currentTab === 1 && item.markdown && (
+          {tabName === "Preview" && <CourseItem {...item} />}
+          {tabName === "Edit" && item.markdown && (
             <MarkdownEditor
               value={item.markdown}
               onChange={(markdown) => onChange({ markdown })}
             />
           )}
-          {currentTab === 1 && item.question && (
+          {tabName === "Edit" && item.question && (
             <EditSimpleQuestion
               value={item}
               onChange={(newItem) => onChange(newItem)}
+            />
+          )}
+          {tabName === "Select Samples" && (
+            <SelectSamplesFromDataset
+              selection={item.dataset.samples || []}
+              dataset={dataset}
+              onChange={(newSamples) => {
+                onChange({
+                  ...item,
+                  dataset: { ...item.dataset, samples: newSamples },
+                })
+              }}
             />
           )}
         </Box>
@@ -145,6 +163,7 @@ export const CourseEditor = ({ dataset: datasetProp, onChangeDataset }) => {
                 <EditItem
                   key={itemIndex}
                   item={item}
+                  dataset={dataset}
                   onChange={(newValue) => {
                     setDataset(
                       dataset.setIn(
