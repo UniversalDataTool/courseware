@@ -13,25 +13,16 @@ function App() {
       <RecoilRoot>
         <Router>
           <Switch>
-            <Route exact path={["/", "/courses"]}>
+            <Route exact path={["/courses", "/"]}>
               <LandingPage />
             </Route>
-            <Route exact path={["/create", "/courses/create"]}>
+            <Route exact path="/courses/create">
               <CreatePage />
             </Route>
-            <Route
-              exact
-              path={["/course/:course_id", "/courses/course/:course_id"]}
-            >
+            <Route exact path="/courses/course/:course_id">
               <CoursePage />
             </Route>
-            <Route
-              exact
-              path={[
-                "/course/:course_id/edit",
-                "/courses/course/:course_id/edit",
-              ]}
-            >
+            <Route exact path="/courses/course/:course_id/edit">
               <EditCoursePage />
             </Route>
           </Switch>

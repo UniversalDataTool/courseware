@@ -25,6 +25,7 @@ const Header = styled("div")({
   backgroundColor: colors.blue[600],
   padding: 8,
   boxSizing: "border-box",
+  flexWrap: "wrap",
 })
 const HeaderButton = styled(Button)({
   color: "white",
@@ -43,6 +44,8 @@ const Hero = styled("div")({
   width: "100%",
   backgroundColor: colors.blue[500],
   padding: 16,
+  paddingLeft: 32,
+  paddingRight: 32,
   color: "white",
   boxSizing: "border-box",
 })
@@ -75,6 +78,8 @@ const HeroTryButton = styled(Button)({
 const Section = styled("div")({
   display: "flex",
   padding: 16,
+  paddingLeft: 32,
+  paddingRight: 32,
   paddingTop: 32,
   flexDirection: "column",
   "& p": {
@@ -96,11 +101,11 @@ const LandingPage = () => {
           <HeaderButton href="https://universaldatatool.com">
             Universal Data Tool
           </HeaderButton>
-          <HeaderButton href="./create">
+          <HeaderButton href="/courses/create">
             <AddBoxIcon className="icon" />
             Create Course
           </HeaderButton>
-          <HeaderButton href="./course/example">
+          <HeaderButton href="/courses/course/example">
             <PanoramaIcon className="icon" />
             Try Example Course
           </HeaderButton>
@@ -114,10 +119,10 @@ const LandingPage = () => {
             instructions and exercises.
           </HeroSub>
           <HeroButtons>
-            <HeroTryButton href="./create" variant="contained">
+            <HeroTryButton href="/courses/create" variant="contained">
               Create a Course
             </HeroTryButton>
-            <HeroTryButton href="./course/example" variant="contained">
+            <HeroTryButton href="/courses/course/example" variant="contained">
               Try an Example Course
             </HeroTryButton>
             <Box
@@ -187,11 +192,15 @@ const LandingPage = () => {
             </b>
           </p>
           <p>
-            <TryButton href="./create" variant="contained" color="primary">
+            <TryButton
+              href="/courses/create"
+              variant="contained"
+              color="primary"
+            >
               Create a Course
             </TryButton>
             <TryButton
-              href="./course/example"
+              href="/courses/course/example"
               variant="contained"
               color="primary"
             >
