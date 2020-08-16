@@ -7,6 +7,8 @@ import QuestionContext from "material-survey/components/QuestionContext"
 import TestCourseItem from "../TestCourseItem"
 import StyledPaper from "../StyledPaper"
 
+const noop = () => {}
+
 const MarkdownBox = styled(Box)({
   fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
   "& h1": {
@@ -49,7 +51,8 @@ export const CourseItem = ({
         <UniversalDataViewer
           disableHotkeys
           dataset={dataset}
-          onExit={console.log}
+          onExit={noop}
+          onSaveTaskOutputItem={noop}
         />
       </StyledPaper>
     )
