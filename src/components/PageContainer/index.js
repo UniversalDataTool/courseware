@@ -10,7 +10,7 @@ const Container = styled("div")({
 export const PageContainer = ({ children, selectedTab }) => {
   return (
     <Container>
-      {/* <Header /> */}
+      <Header />
       {/* <CenteredContent>asd</CenteredContent> */}
       {children}
     </Container>
