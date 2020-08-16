@@ -20,6 +20,7 @@ import {
 import CourseItem from "../CourseItem"
 import { from as makeImmutable, setIn } from "seamless-immutable"
 import MarkdownEditor from "../MarkdownEditor"
+import EditSimpleQuestion from "../EditSimpleQuestion"
 
 const innerContentStyle = {
   display: "flex",
@@ -59,13 +60,16 @@ const ItemEditContainer = styled(Paper)({
 
 const EditItem = memo(
   ({ item, onChange }) => {
-    const [currentTab, setTab] = useState(1)
+    const [currentTab, setTab] = useState(0)
+    console.log({ currentTab })
     return (
       <ItemEditContainer>
         <Box width="100%" display="flex">
           <Tabs value={currentTab} onChange={(e, ti) => setTab(ti)}>
-            <Tab label="Edit" />
             <Tab label="Preview" />
+            {item.dataset && <Tab label="Select Samples" />}
+            <Tab label="Edit" />
+            {item.test && <Tab label="Configure Test" />}
           </Tabs>
           <Box flexGrow={1} textAlign="right">
             <IconButton>
@@ -80,13 +84,19 @@ const EditItem = memo(
           </Box>
         </Box>
         <Box marginTop={2}>
-          {currentTab === 0 && item.markdown && (
+          {currentTab === 0 && <CourseItem {...item} />}
+          {currentTab === 1 && item.markdown && (
             <MarkdownEditor
               value={item.markdown}
               onChange={(markdown) => onChange({ markdown })}
             />
           )}
-          {currentTab === 1 && <CourseItem {...item} />}
+          {currentTab === 1 && item.question && (
+            <EditSimpleQuestion
+              value={item}
+              onChange={(newItem) => onChange(newItem)}
+            />
+          )}
         </Box>
       </ItemEditContainer>
     )
