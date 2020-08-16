@@ -51,7 +51,16 @@ export const TestCourseItem = ({ test, dataset }) => {
   const datasetWithoutAnnotations = useMemo(() => {
     return {
       ...dataset,
-      samples: dataset.samples.map((s) => ({ ...s, annotation: null })),
+      samples: dataset.samples.map((s) => ({
+        ...s,
+        annotation:
+          test.method === "classificationOnly"
+            ? (s.annotation || []).map((a) => ({
+                ...a,
+                classification: undefined,
+              }))
+            : null,
+      })),
     }
   }, [dataset])
   const finishTest = useEventCallback(() => {
