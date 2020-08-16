@@ -22,6 +22,8 @@ export const ConfigureTest = ({
         {
           name: "exercise",
           title: "Is this a practice exercise?",
+          description:
+            "Practice exercises give the user feedback after each submission. These are better for teaching the user.",
           type: "boolean",
         },
         {

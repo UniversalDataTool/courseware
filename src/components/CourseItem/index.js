@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Box, styled } from "@material-ui/core"
+import React, { useState, useEffect } from "react"
+import { Box, Typography, styled, colors } from "@material-ui/core"
 import ReactMarkdown from "react-markdown"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 import RadioGroupQuestion from "material-survey/components/RadiogroupQuestion"
@@ -22,6 +22,22 @@ const MarkdownBox = styled(Box)({
     marginBottom: 8,
   },
 })
+const PunishmentOverlay = styled(Typography)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "absolute",
+  zIndex: 100,
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundColor: "rgba(255,0,0,0.5)",
+  color: "#fff",
+  fontWeight: "bold",
+  fontSize: 36,
+  textShadow: "0px 2px 4px rgba(0,0,0,0.2)",
+})
 
 export const CourseItem = ({
   markdown,
@@ -32,6 +48,15 @@ export const CourseItem = ({
   test,
 }) => {
   const [answer, setAnswer] = useState(null)
+  const [punishingUser, setPunishingUser] = useState(false)
+  useEffect(() => {
+    if (punishingUser) {
+      const timeout = setTimeout(() => {
+        setPunishingUser(false)
+      }, 5000)
+      return () => clearTimeout(timeout)
+    }
+  }, [punishingUser])
 
   if (markdown) {
     return (
@@ -61,7 +86,8 @@ export const CourseItem = ({
   if (question) {
     return (
       <StyledPaper>
-        <Box paddingTop={2} paddingLeft={2}>
+        <Box position="relative" paddingTop={2} paddingLeft={2}>
+          {punishingUser && <PunishmentOverlay>Incorrect!</PunishmentOverlay>}
           <QuestionContext.Provider
             value={{
               containerStyleType: "flat",
@@ -72,7 +98,14 @@ export const CourseItem = ({
             }}
           >
             <RadioGroupQuestion
-              onChangeAnswer={setAnswer}
+              key={punishingUser}
+              onChangeAnswer={(newAnswer) => {
+                if (newAnswer !== question.choices[answerIndex]) {
+                  setPunishingUser(true)
+                } else {
+                  setAnswer(newAnswer)
+                }
+              }}
               question={question}
             />
           </QuestionContext.Provider>

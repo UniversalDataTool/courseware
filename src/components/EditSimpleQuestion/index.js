@@ -59,9 +59,8 @@ Answer: ${answerIndex + 1}
             setError(e.toString())
           }
         }}
-      >
-        {rendering}
-      </TextArea>
+        defaultValue={rendering}
+      ></TextArea>
     </Fragment>
   )
 }
