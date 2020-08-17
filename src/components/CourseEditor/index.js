@@ -38,6 +38,7 @@ import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
 import ConfigureTest from "../ConfigureTest"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 import { useDebounce } from "react-use"
+import StudentsDialog from "../StudentsDialog"
 
 const innerContentStyle = {
   display: "flex",
@@ -274,6 +275,10 @@ export const CourseEditor = ({
   onChangeDataset,
 }) => {
   if (!students) students = []
+  const [studentDialogOpen, toggleStudentDialogOpen] = useReducer(
+    (s) => !s,
+    false
+  )
   const [dataset, setDataset] = useState(() => {
     const dataset = makeImmutable(datasetProp)
     // Add ids to sections to make rendering keying easier
@@ -286,7 +291,7 @@ export const CourseEditor = ({
   })
   const [hiddenSections, setHiddenSections] = useState([])
   const {
-    training: { sections, title: courseTitle } = {
+    training: { sections, title: courseTitle, completeMessage } = {
       sections: [],
       title: "Untitled Course",
     },
@@ -309,8 +314,12 @@ export const CourseEditor = ({
             <Button href={`/courses/course/${courseId}`} variant="outlined">
               Go to Course
             </Button>
-            <Button disabled={!students.length} variant="outlined">
-              {students.length} Completions
+            <Button
+              onClick={toggleStudentDialogOpen}
+              disabled={!students.length}
+              variant="outlined"
+            >
+              {students.length} Passing Students
             </Button>
           </RightSideWithMargin>
         </PageOrSectionEditContainer>
@@ -552,7 +561,26 @@ export const CourseEditor = ({
             </Fragment>
           )
         })}
+        <SectionBuffer>After the Course</SectionBuffer>
+        <ItemEditContainer>
+          <Box fontWeight="bold" fontSize={18} marginTop={1} marginBottom={3}>
+            Course Completion Message:
+          </Box>
+          <MarkdownEditor
+            value={completeMessage}
+            onChange={(markdown) =>
+              setDataset(
+                dataset.setIn(["training", "completeMessage"], markdown)
+              )
+            }
+          />
+        </ItemEditContainer>
       </CenteredContent>
+      <StudentsDialog
+        open={studentDialogOpen}
+        onClose={toggleStudentDialogOpen}
+        students={students}
+      />
     </Container>
   )
 }

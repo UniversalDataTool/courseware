@@ -5,7 +5,7 @@
       "dest": "/api/course/[course_id].js?course_id=$1"
     },
     {
-      "src": "/courses/api/course/([a-z0-9]*)/(.*)",
+      "src": "/courses/api/course/([a-z0-9-]*)/(.*)",
       "dest": "/api/course/[course_id]/$2?course_id=$1"
     },
     { "src": "/courses/api/(.*)", "dest": "/api/$1" },

@@ -22,6 +22,8 @@ export const EditCoursePage = () => {
       if (!response.dataset.training) {
         response.dataset.training = {
           title: "New Course",
+          completeMessage:
+            "Thanks for taking this course!\n\nYour instructor has a special link that will allow them to see you've completed the course.",
           sections: [
             {
               name: "Introduction",
@@ -57,7 +59,10 @@ export const EditCoursePage = () => {
 
       // Get students
       const studentsResponse = await fetch(
-        `/courses/api/course/${course_id}/students?edit_key=${edit_key}`
+        `/courses/api/course/${course_id}/students`,
+        {
+          headers: { Authorization: edit_key },
+        }
       ).then((r) => r.json())
 
       setStudents(studentsResponse.students)

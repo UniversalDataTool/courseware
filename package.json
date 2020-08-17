@@ -13,6 +13,7 @@
     "i18next-browser-languagedetector": "^6.0.0",
     "micro": "^9.3.4",
     "micro-query": "^0.3.0",
+    "moment": "^2.27.0",
     "pgknexlove": "^1.0.3",
     "qs": "^6.9.4",
     "react": "^16.13.1",

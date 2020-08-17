@@ -28,7 +28,19 @@ export const CoursePage = () => {
           <CircularProgress size={50} />
         </Box>
       ) : (
-        <Course dataset={course.dataset} />
+        <Course
+          dataset={course.dataset}
+          onSubmit={async ({ contactInfo }) => {
+            await fetch(`/courses/api/course/${course_id}/submit`, {
+              method: "POST",
+              body: JSON.stringify({
+                course_id,
+                contact_info: contactInfo,
+              }),
+              headers: { "Content-Type": "application/json" },
+            })
+          }}
+        />
       )}
     </PageContainer>
   )

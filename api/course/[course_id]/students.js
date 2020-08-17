@@ -1,4 +1,4 @@
-const getDB = require("../lib/database")
+const getDB = require("../../../lib/database")
 const { send, json } = require("micro")
 const query = require("micro-query")
 
@@ -22,7 +22,9 @@ module.exports = async (req, res) => {
       }
 
       return send(res, 200, {
-        students: await db("course_completion").where({ course_id }),
+        students: await db("course_completion")
+          .where({ course_id })
+          .orderBy("created_at", "DESC"),
       })
     }
     default:

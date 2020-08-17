@@ -1,4 +1,4 @@
-const getDB = require("../lib/database")
+const getDB = require("../../../lib/database")
 const { send, json } = require("micro")
 const query = require("micro-query")
 
