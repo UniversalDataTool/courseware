@@ -37,6 +37,7 @@ import EditSimpleQuestion from "../EditSimpleQuestion"
 import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
 import ConfigureTest from "../ConfigureTest"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
+import { useDebounce } from "react-use"
 
 const innerContentStyle = {
   display: "flex",
@@ -275,6 +276,8 @@ export const CourseEditor = ({ dataset: datasetProp, onChangeDataset }) => {
       title: "Untitled Course",
     },
   } = dataset
+  useDebounce(() => onChangeDataset(dataset), 10000, [dataset])
+
   return (
     <Container>
       <CenteredContent contentStyle={innerContentStyle}>
