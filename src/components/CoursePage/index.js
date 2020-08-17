@@ -1,12 +1,37 @@
-import React from "react"
-import { styled, colors } from "@material-ui/core"
+import React, { useState, useEffect } from "react"
+import { styled, colors, Box, CircularProgress } from "@material-ui/core"
 import { useParams } from "react-router-dom"
+import PageContainer from "../PageContainer"
+import Course from "../Course"
 
 const Container = styled("div")({})
 
 export const CoursePage = () => {
   const { course_id } = useParams()
-  return <Container>Course Page: {course_id}</Container>
+  const [course, setCourse] = useState()
+  const loading = !course
+  useEffect(() => {
+    if (!course_id) return
+    async function getCourse() {
+      const response = await fetch(
+        `/courses/api/course/${course_id}`
+      ).then((r) => r.json())
+      setCourse(response)
+    }
+    getCourse()
+  }, [course_id])
+
+  return (
+    <PageContainer>
+      {loading ? (
+        <Box padding="100px" textAlign="center">
+          <CircularProgress size={50} />
+        </Box>
+      ) : (
+        <Course dataset={course.dataset} />
+      )}
+    </PageContainer>
+  )
 }
 
 export default CoursePage

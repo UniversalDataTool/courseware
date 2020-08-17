@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { Box, Typography, styled, colors } from "@material-ui/core"
+import {
+  CircularProgress,
+  Box,
+  Typography,
+  styled,
+  colors,
+} from "@material-ui/core"
 import ReactMarkdown from "react-markdown"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 import RadioGroupQuestion from "material-survey/components/RadiogroupQuestion"
@@ -24,6 +30,7 @@ const MarkdownBox = styled(Box)({
 })
 const PunishmentOverlay = styled(Typography)({
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   position: "absolute",
@@ -35,8 +42,9 @@ const PunishmentOverlay = styled(Typography)({
   backgroundColor: "rgba(255,0,0,0.5)",
   color: "#fff",
   fontWeight: "bold",
-  fontSize: 36,
+  fontSize: 24,
   textShadow: "0px 2px 4px rgba(0,0,0,0.2)",
+  "& .text": { marginBottom: 8 },
 })
 
 export const CourseItem = ({
@@ -87,7 +95,12 @@ export const CourseItem = ({
     return (
       <StyledPaper>
         <Box position="relative" paddingTop={2} paddingLeft={2}>
-          {punishingUser && <PunishmentOverlay>Incorrect!</PunishmentOverlay>}
+          {punishingUser && (
+            <PunishmentOverlay>
+              <span className="text">Wrong!</span>
+              <CircularProgress size={32} color="white" />
+            </PunishmentOverlay>
+          )}
           <QuestionContext.Provider
             value={{
               containerStyleType: "flat",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { styled, colors, CircularProgress, Box } from "@material-ui/core"
-import { useParams, useQueryParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import qs from "qs"
 import PageContainer from "../PageContainer"
 import CourseEditor from "../CourseEditor"
@@ -9,6 +9,7 @@ const Container = styled("div")({})
 
 export const EditCoursePage = () => {
   const { course_id } = useParams()
+  const [students, setStudents] = useState(null)
   const { edit_key } = qs.parse(window.location.search.slice(1))
   const [course, setCourse] = useState()
   const loading = !course
@@ -53,6 +54,13 @@ export const EditCoursePage = () => {
         }
       }
       setCourse(response)
+
+      // Get students
+      const studentsResponse = await fetch(
+        `/courses/api/course/${course_id}/students?edit_key=${edit_key}`
+      ).then((r) => r.json())
+
+      setStudents(studentsResponse.students)
     }
     getCourse()
   }, [edit_key, course_id])
@@ -64,6 +72,8 @@ export const EditCoursePage = () => {
         </Box>
       ) : (
         <CourseEditor
+          courseId={course_id}
+          students={students}
           dataset={course.dataset}
           onChangeDataset={async (dataset) => {
             await fetch(`/courses/api/course/${course_id}`, {

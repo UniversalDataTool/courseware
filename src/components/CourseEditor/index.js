@@ -87,6 +87,15 @@ const ContentsAreHidden = styled(Typography)({
   fontSize: 24,
   color: colors.grey[500],
 })
+const RightSideWithMargin = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  flexGrow: 1,
+  "& > *": {
+    margin: 8,
+  },
+})
 
 const NewItemCreator = ({
   dataset,
@@ -258,7 +267,13 @@ const EditItem = memo(
   (next, prev) => next.item === prev.item && next.key === prev.key
 )
 
-export const CourseEditor = ({ dataset: datasetProp, onChangeDataset }) => {
+export const CourseEditor = ({
+  dataset: datasetProp,
+  courseId,
+  students,
+  onChangeDataset,
+}) => {
+  if (!students) students = []
   const [dataset, setDataset] = useState(() => {
     const dataset = makeImmutable(datasetProp)
     // Add ids to sections to make rendering keying easier
@@ -290,6 +305,14 @@ export const CourseEditor = ({ dataset: datasetProp, onChangeDataset }) => {
               setDataset(dataset.setIn(["training", "title"], e.target.value))
             }
           />
+          <RightSideWithMargin>
+            <Button href={`/courses/course/${courseId}`} variant="outlined">
+              Go to Course
+            </Button>
+            <Button disabled={!students.length} variant="outlined">
+              {students.length} Completions
+            </Button>
+          </RightSideWithMargin>
         </PageOrSectionEditContainer>
         {sections.map((section, sectionIndex) => {
           const hidden = hiddenSections.includes(section.name)

@@ -21,7 +21,9 @@ module.exports = async (req, res) => {
         return send(res, 403, "incorrect edit key")
       }
 
-      return send(res, 200, await db("course_completion").where({ course_id }))
+      return send(res, 200, {
+        students: await db("course_completion").where({ course_id }),
+      })
     }
     default:
       return send(res, 405)
