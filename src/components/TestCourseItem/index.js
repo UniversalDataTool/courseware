@@ -6,6 +6,7 @@ import { colors, Typography, Button, Box, styled } from "@material-ui/core"
 import StyledPaper from "../StyledPaper"
 import SimpleDialog from "universal-data-tool/components/SimpleDialog"
 import checkAnswer from "./check-answer"
+import ReactMarkdown from "react-markdown"
 
 const TestHeader = styled(Box)({
   flexGrow: 1,
@@ -115,6 +116,11 @@ export const TestCourseItem = ({ test, dataset }) => {
               <b>Test: {test.name}</b> ({dataset.samples.length} Problem
               {dataset.samples.length > 1 ? "s" : ""})
             </div>
+            {test.instructions && (
+              <div>
+                <ReactMarkdown source={test.instructions} />
+              </div>
+            )}
             {testResults &&
               testResults.map(({ type, message }) =>
                 type === "error" ? (

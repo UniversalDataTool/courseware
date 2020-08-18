@@ -187,7 +187,7 @@ const EditItem = memo(
     const tabs = [
       "Preview",
       item.dataset && "Select Samples",
-      "Edit",
+      item.test ? "Edit Solution" : "Edit",
       item.test && "Configure Test",
     ].filter(Boolean)
     const tabName = tabs[currentTab]
@@ -240,7 +240,7 @@ const EditItem = memo(
               }}
             />
           )}
-          {tabName === "Edit" && item.dataset && (
+          {(tabName === "Edit" || tabName === "Edit Solution") && item.dataset && (
             <UniversalDataViewer
               disableHotkeys
               dataset={item.dataset}

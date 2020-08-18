@@ -1,5 +1,7 @@
-import React, { useMemo } from "react"
+import React, { useMemo, useState } from "react"
 import Survey from "material-survey/components/Survey"
+import MarkdownEditor from "../MarkdownEditor"
+import { Box, colors } from "@material-ui/core"
 
 export const ConfigureTest = ({
   test,
@@ -60,15 +62,33 @@ export const ConfigureTest = ({
     [iface]
   )
   return (
-    <Survey
-      noActions
-      onQuestionChange={(questionId, newValue, answers) => {
-        onChange(test.setIn([questionId], newValue))
-      }}
-      variant="flat"
-      form={form}
-      defaultAnswers={defaultAnswers}
-    />
+    <>
+      <Box
+        fontSize={18}
+        fontWeight="bold"
+        colors={colors.grey[600]}
+        paddingBottom={2}
+      >
+        Instructions
+      </Box>
+      <Box paddingBottom={2}>
+        <MarkdownEditor
+          value={test.instructions}
+          onChange={(s) => {
+            onChange(test.setIn(["instructions"], s))
+          }}
+        />
+      </Box>
+      <Survey
+        noActions
+        onQuestionChange={(questionId, newValue, answers) => {
+          onChange(test.setIn([questionId], newValue))
+        }}
+        variant="flat"
+        form={form}
+        defaultAnswers={defaultAnswers}
+      />
+    </>
   )
 }
 export default ConfigureTest

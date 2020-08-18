@@ -70,12 +70,19 @@ export const CreatePage = () => {
           </p>
           <p>
             Forgot your dataset? Try using these{" "}
-            <Link href="#">Elon Musk tweets</Link> or these{" "}
-            <Link href="#">cats photos</Link>. These are in the{" "}
+            <Link href="https://s3.amazonaws.com/datasets.workaround.online/elon_musk_tweets.udt.json">
+              elon_musk_tweets.udt.json
+            </Link>{" "}
+            or these{" "}
+            <Link href="https://s3.amazonaws.com/datasets.workaround.online/cats.udt.json">
+              cats_photos.udt.json
+            </Link>
+            . These are in the{" "}
             <Link href="https://github.com/UniversalDataTool/udt-format">
               udt.json format
             </Link>
-            , it's really simple, well-documented format!
+            , it's really simple, well-documented format you get from the{" "}
+            <a href="https://universaldatatool.com/app">Universal Data Tool</a>.
           </p>
         </MainContent>
         {error && <Box color="#f00">{error}</Box>}
