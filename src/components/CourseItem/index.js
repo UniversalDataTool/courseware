@@ -52,7 +52,7 @@ export const CourseItem = ({
   dataset,
   question,
   answerIndex,
-  exercise,
+  onCompleteTest,
   test,
 }) => {
   const [answer, setAnswer] = useState(null)
@@ -76,7 +76,13 @@ export const CourseItem = ({
 
   if (dataset) {
     if (test) {
-      return <TestCourseItem test={test} dataset={dataset} />
+      return (
+        <TestCourseItem
+          test={test}
+          dataset={dataset}
+          onCompleteTest={onCompleteTest}
+        />
+      )
     }
 
     return (
@@ -116,6 +122,7 @@ export const CourseItem = ({
                 if (newAnswer !== question.choices[answerIndex]) {
                   setPunishingUser(true)
                 } else {
+                  if (onCompleteTest) onCompleteTest()
                   setAnswer(newAnswer)
                 }
               }}

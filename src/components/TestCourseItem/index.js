@@ -41,7 +41,7 @@ const FeedbackText = styled(Typography)({
   fontSize: 18,
 })
 
-export const TestCourseItem = ({ test, dataset }) => {
+export const TestCourseItem = ({ test, dataset, onCompleteTest }) => {
   const userAnswers = useRef([])
   const [feedback, setFeedback] = useState()
   const [
@@ -100,6 +100,7 @@ export const TestCourseItem = ({ test, dataset }) => {
         passed: false,
       })
     } else {
+      if (onCompleteTest) onCompleteTest()
       setIsTakingTest({
         isTakingTest: false,
         testResults: results,
