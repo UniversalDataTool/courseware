@@ -5,7 +5,7 @@ import { Box, colors } from "@material-ui/core"
 
 export const ConfigureTest = ({
   test,
-  dataset: { interface: iface },
+  dataset: { interface: iface, samples },
   onChange,
 }) => {
   const defaultAnswers = useMemo(

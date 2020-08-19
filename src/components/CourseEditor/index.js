@@ -12,33 +12,26 @@ import {
   Box,
   Typography,
   colors,
-  Grid,
   TextField,
   Paper,
-  Tabs,
   Button,
-  Tab,
   IconButton,
   Tooltip,
 } from "@material-ui/core"
 import {
   KeyboardArrowUp as KeyboardArrowUpIcon,
   KeyboardArrowDown as KeyboardArrowDownIcon,
-  LibraryAdd as LibraryAddIcon,
   Visibility as VisibilityIcon,
   CenterFocusStrong as CenterFocusStrongIcon,
   VisibilityOff as VisibilityOffIcon,
   Close as CloseIcon,
 } from "@material-ui/icons"
-import CourseItem from "../CourseItem"
-import { from as makeImmutable, setIn } from "seamless-immutable"
+import { from as makeImmutable } from "seamless-immutable"
 import MarkdownEditor from "../MarkdownEditor"
-import EditSimpleQuestion from "../EditSimpleQuestion"
-import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
-import ConfigureTest from "../ConfigureTest"
-import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
 import { useDebounce } from "react-use"
 import StudentsDialog from "../StudentsDialog"
+import NewItemCreator from "../NewItemCreator"
+import EditCourseItem from "../EditCourseItem"
 
 const innerContentStyle = {
   display: "flex",
@@ -76,13 +69,6 @@ const ItemEditContainer = styled(Paper)({
   padding: 24,
   marginTop: 32,
 })
-const NewItemOption = styled(Button)({
-  margin: 8,
-  backgroundColor: "#fff",
-})
-const NewItemIconButton = styled(IconButton)({
-  color: colors.grey[500],
-})
 const ContentsAreHidden = styled(Typography)({
   textAlign: "center",
   fontSize: 24,
@@ -97,176 +83,6 @@ const RightSideWithMargin = styled(Box)({
     margin: 8,
   },
 })
-
-const NewItemCreator = ({
-  dataset,
-  onAddItem,
-  canAddSection,
-  onAddSection,
-}) => {
-  const [open, toggleOpen] = useReducer((state) => !state, false)
-  return (
-    <Box flexGrow={1} textAlign="center">
-      <NewItemIconButton onClick={toggleOpen}>
-        {!open ? <LibraryAddIcon /> : <CloseIcon />}
-      </NewItemIconButton>
-      {open && (
-        <Box marginTop={2}>
-          <NewItemOption
-            onClick={() => {
-              onAddItem({ markdown: "# Empty Markdown Item" })
-              toggleOpen()
-            }}
-            variant="outlined"
-          >
-            Add Markdown Instructions
-          </NewItemOption>
-          <NewItemOption
-            onClick={() => {
-              onAddItem({
-                question: {
-                  type: "radiogroup",
-                  title: "Some question title",
-                  choices: ["Answer One", "Answer Two"],
-                },
-                answerIndex: 0,
-              })
-              toggleOpen()
-            }}
-            variant="outlined"
-          >
-            Add Question
-          </NewItemOption>
-          <NewItemOption
-            onClick={() => {
-              onAddItem({
-                dataset: {
-                  interface: dataset.interface,
-                  samples: [],
-                },
-              })
-              toggleOpen()
-            }}
-            variant="outlined"
-          >
-            Add Data View
-          </NewItemOption>
-          <NewItemOption
-            onClick={() => {
-              onAddItem({
-                dataset: {
-                  interface: dataset.interface,
-                  samples: [],
-                },
-                test: {},
-              })
-              toggleOpen()
-            }}
-            variant="outlined"
-          >
-            Add Test or Exercise
-          </NewItemOption>
-          <NewItemOption
-            onClick={() => {
-              onAddSection()
-              toggleOpen()
-            }}
-            variant="outlined"
-          >
-            Add Section
-          </NewItemOption>
-        </Box>
-      )}
-    </Box>
-  )
-}
-
-const EditItem = memo(
-  ({ dataset, item, onChange, onMove, onDelete }) => {
-    const [currentTab, setTab] = useState(0)
-    const tabs = [
-      "Preview",
-      item.dataset && "Select Samples",
-      item.test ? "Edit Solution" : "Edit",
-      item.test && "Configure Test",
-    ].filter(Boolean)
-    const tabName = tabs[currentTab]
-    return (
-      <ItemEditContainer>
-        <Box width="100%" display="flex">
-          <Tabs value={currentTab} onChange={(e, ti) => setTab(ti)}>
-            {tabs.map((t) => (
-              <Tab key={t} label={t} />
-            ))}
-          </Tabs>
-          <Box flexGrow={1} textAlign="right">
-            <Tooltip title="Move Item Down">
-              <IconButton onClick={() => onMove("down")}>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Move Item Up">
-              <IconButton onClick={() => onMove("up")}>
-                <KeyboardArrowUpIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Delete Item">
-              <IconButton onClick={onDelete}>
-                <CloseIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
-        </Box>
-        <Box marginTop={2}>
-          {tabName === "Preview" && <CourseItem {...item} />}
-          {tabName === "Edit" && item.markdown && (
-            <MarkdownEditor
-              value={item.markdown}
-              onChange={(markdown) => onChange({ markdown })}
-            />
-          )}
-          {tabName === "Edit" && item.question && (
-            <EditSimpleQuestion
-              value={item}
-              onChange={(newItem) => onChange(newItem)}
-            />
-          )}
-          {tabName === "Select Samples" && (
-            <SelectSamplesFromDataset
-              selection={item.dataset.samples || []}
-              dataset={dataset}
-              onChange={(newSamples) => {
-                onChange(item.setIn(["dataset", "samples"], newSamples))
-              }}
-            />
-          )}
-          {(tabName === "Edit" || tabName === "Edit Solution") && item.dataset && (
-            <UniversalDataViewer
-              disableHotkeys
-              dataset={item.dataset}
-              onSaveTaskOutputItem={(sampleIndex, output) => {
-                onChange(
-                  item.setIn(
-                    ["dataset", "samples", sampleIndex, "annotation"],
-                    output
-                  )
-                )
-              }}
-            />
-          )}
-          {tabName === "Configure Test" && item.test && (
-            <ConfigureTest
-              test={item.test}
-              dataset={dataset}
-              onChange={(test) => onChange(item.setIn(["test"], test))}
-            />
-          )}
-        </Box>
-      </ItemEditContainer>
-    )
-  },
-  (next, prev) => next.item === prev.item && next.key === prev.key
-)
 
 export const CourseEditor = ({
   dataset: datasetProp,
@@ -463,9 +279,9 @@ export const CourseEditor = ({
                   />
                   {(section.items || []).map((item, itemIndex) => (
                     <Fragment key={itemIndex}>
-                      <EditItem
+                      <EditCourseItem
+                        key={item.id || itemIndex}
                         item={item}
-                        key={`${itemIndex},${section.items.length}`}
                         dataset={dataset}
                         onMove={(direction) => {
                           if (direction === "up" && itemIndex !== 0) {

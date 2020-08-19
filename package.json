@@ -27,7 +27,7 @@
     "recoil": "^0.0.10",
     "seamless-immutable": "^7.1.4",
     "seed-random": "^2.2.0",
-    "universal-data-tool": "^0.11.7"
+    "universal-data-tool": "^0.11.10-beta.5"
   },
   "scripts": {
     "start": "react-scripts start",
