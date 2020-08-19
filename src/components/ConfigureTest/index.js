@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useMemo, useState, useEffect } from "react"
 import Survey from "material-survey/components/Survey"
 import MarkdownEditor from "../MarkdownEditor"
 import { Box, colors } from "@material-ui/core"
@@ -11,12 +11,17 @@ export const ConfigureTest = ({
   const defaultAnswers = useMemo(
     () => ({
       exercise: true,
-      method: iface.type.includes("segmentation") ? "pixelIOU" : "exact",
-      pixelIOUErrorAllowed: 0.2,
+      method: iface.type.includes("segmentation") ? "iou" : "exact",
+      iouErrorThreshold: 0.2,
       ...test,
     }),
     [iface]
   )
+
+  useEffect(() => {
+    onChange(defaultAnswers)
+    // eslint-disable-next-line
+  }, [])
 
   const form = useMemo(
     () => ({
@@ -38,9 +43,9 @@ export const ConfigureTest = ({
               text: "Answers should exactly match the solution",
             },
             iface.type.includes("segmentation") && {
-              value: "pixelIOU",
+              value: "iou",
               text:
-                "Answers should be close to the solution, measured by pixel intersection over union",
+                "Answers should be close to the solution, measured by intersection over union",
             },
             iface.type.includes("segmentation") && {
               value: "classificationOnly",
@@ -49,10 +54,10 @@ export const ConfigureTest = ({
           ].filter(Boolean),
         },
         {
-          name: "pixelIOUErrorAllowed",
+          name: "iouErrorThreshold",
           title: "How much pixel IOU error is allowed?",
           type: "slider",
-          visibleIf: '{method} == "pixelIOU"',
+          visibleIf: '{method} == "iou"',
           min: 0.01,
           max: 0.99,
           step: 0.01,
