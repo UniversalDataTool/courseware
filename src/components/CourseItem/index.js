@@ -90,6 +90,7 @@ export const CourseItem = ({
         <UniversalDataViewer
           disableHotkeys
           dataset={dataset}
+          onExit={noop}
           onSaveTaskOutputItem={noop}
         />
       </StyledPaper>

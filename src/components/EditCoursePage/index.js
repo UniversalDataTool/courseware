@@ -16,6 +16,7 @@ export const EditCoursePage = () => {
   useEffect(() => {
     if (!edit_key || !course_id) return
     async function getCourse() {
+      if (course) return
       const response = await fetch(
         `/courses/api/course/${course_id}?edit_key=${edit_key}`
       ).then((r) => r.json())

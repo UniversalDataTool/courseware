@@ -20,8 +20,8 @@ export default (test, solution, answer) => {
     const iouError =
       1 -
       getIOU(
-        asMutable(solution, { deep: true }),
-        asMutable(answer, { deep: true })
+        asMutable(solution || [], { deep: true }),
+        asMutable(answer || [], { deep: true })
       )
     if (iouError > (test.iouErrorThreshold || 0.1)) {
       return `The pixels you classified are ${(iouError * 100).toFixed(

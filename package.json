@@ -29,7 +29,7 @@
     "seamless-immutable": "^7.1.4",
     "seed-random": "^2.2.0",
     "udt-iou-error": "^0.1.0",
-    "universal-data-tool": "^0.11.10-beta.5"
+    "universal-data-tool": "^0.11.10-beta.6"
   },
   "scripts": {
     "start": "react-scripts start",

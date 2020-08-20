@@ -1,22 +1,10 @@
-import React, {
-  useState,
-  useMemo,
-  Fragment,
-  memo,
-  useReducer,
-  useEffect,
-} from "react"
-import CenteredContent from "../CenteredContent"
+import React, { useState, memo } from "react"
 import {
   styled,
   Box,
-  Typography,
   colors,
-  Grid,
-  TextField,
   Paper,
   Tabs,
-  Button,
   Tab,
   IconButton,
   Tooltip,
@@ -24,21 +12,14 @@ import {
 import {
   KeyboardArrowUp as KeyboardArrowUpIcon,
   KeyboardArrowDown as KeyboardArrowDownIcon,
-  LibraryAdd as LibraryAddIcon,
-  Visibility as VisibilityIcon,
-  CenterFocusStrong as CenterFocusStrongIcon,
-  VisibilityOff as VisibilityOffIcon,
   Close as CloseIcon,
 } from "@material-ui/icons"
 import CourseItem from "../CourseItem"
-import { from as makeImmutable, setIn } from "seamless-immutable"
 import MarkdownEditor from "../MarkdownEditor"
 import EditSimpleQuestion from "../EditSimpleQuestion"
 import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
 import ConfigureTest from "../ConfigureTest"
 import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
-import { useDebounce } from "react-use"
-import StudentsDialog from "../StudentsDialog"
 import withSolutionOptions from "./with-solution-options"
 import JSONEditor from "../JSONEditor"
 import useEventCallback from "use-event-callback"
@@ -129,15 +110,6 @@ const EditCourseItemInnerMemo = memo(
                   )
                 )
               }}
-              // onSaveTaskOutputItem={(sampleIndex, output) => {
-              //   console.log("onSaveTaskOutputItem", { item })
-              //   onChange(
-              //     item.setIn(
-              //       ["dataset", "samples", sampleIndex, "annotation"],
-              //       output
-              //     )
-              //   )
-              // }}
             />
           )}
           {tabName === "Configure Test" && item.test && (
@@ -148,7 +120,10 @@ const EditCourseItemInnerMemo = memo(
             />
           )}
           {tabName === "JSON" && (
-            <JSONEditor json={item} onSave={(newJSON) => onChange(newJSON)} />
+            <JSONEditor
+              json={{ ...item, id: undefined }}
+              onSave={(newJSON) => onChange(newJSON)}
+            />
           )}
         </Box>
       </ItemEditContainer>

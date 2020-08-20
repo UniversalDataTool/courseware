@@ -15,8 +15,16 @@ module.exports = async (req, res) => {
     .where({ course_id })
     .first()
 
+  if (!course) return send(res, 404)
+
   switch (req.method) {
     case "GET": {
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename="${
+          (course.dataset.training || {}).title || "course"
+        }.udt.json"`
+      )
       return send(res, 200, course)
     }
     case "PUT": {

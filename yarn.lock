@@ -18348,10 +18348,10 @@ unist-util-visit@^1.1.0, unist-util-visit@^1.3.0:
   dependencies:
     unist-util-visit-parents "^2.0.0"
 
-universal-data-tool@^0.11.10-beta.5:
-  version "0.11.10-beta.5"
-  resolved "https://registry.yarnpkg.com/universal-data-tool/-/universal-data-tool-0.11.10-beta.5.tgz#464ec748028464eff20c8e10768cae73699dd54d"
-  integrity sha512-i7adZnbODMLE7JS+MWFdFtk4LNCc39ghetEsCzLhnYZctNIGmtSGiptC82ZpvMlE0mK4vpghHIrE8JyJ80mvvg==
+universal-data-tool@^0.11.10-beta.6:
+  version "0.11.10-beta.6"
+  resolved "https://registry.yarnpkg.com/universal-data-tool/-/universal-data-tool-0.11.10-beta.6.tgz#67e3c70c361611da83bfac6ac65a7296f53f7540"
+  integrity sha512-eoQqH3ttw5NciZP2mQc8rvz7vlMJpxW6C02bZGy90GtULCVmShgR0jdMf+dKETD80wEJ9zC9G/OQhI/XpMgIjg==
   dependencies:
     "@material-ui/core" "^4.9.5"
     "@material-ui/icons" "^4.9.1"

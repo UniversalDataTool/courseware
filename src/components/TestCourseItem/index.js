@@ -108,6 +108,8 @@ export const TestCourseItem = ({ test, dataset, onCompleteTest }) => {
       })
     }
   })
+  const assessmentType = test.exercise ? "Exercise" : "Test"
+
   return (
     <Box marginTop={4} marginBottom={4}>
       <StyledPaper>
@@ -150,10 +152,10 @@ export const TestCourseItem = ({ test, dataset, onCompleteTest }) => {
                 variant="outlined"
               >
                 {passed
-                  ? "Retake Test"
+                  ? `Retake ${assessmentType}`
                   : testResults
-                  ? "Retry Test"
-                  : "Start Test"}
+                  ? `Retry ${assessmentType}`
+                  : `Start ${assessmentType}`}
               </StyledButton>
             )}
             {passed && (
@@ -201,7 +203,10 @@ export const TestCourseItem = ({ test, dataset, onCompleteTest }) => {
                     setCurrentSampleIndex(currentSampleIndex + 1)
                   }
                 } else if (action === "go-to-previous") {
-                  setCurrentSampleIndex(currentSampleIndex - 1)
+                  alert(
+                    "Going back is not supported yet! You can fix this by opening a PR!"
+                  )
+                  // setCurrentSampleIndex(currentSampleIndex - 1)
                 } else if (!action) {
                   finishTest()
                 }

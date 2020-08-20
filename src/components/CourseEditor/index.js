@@ -127,6 +127,13 @@ export const CourseEditor = ({
             }
           />
           <RightSideWithMargin>
+            <Button
+              download
+              variant="outlined"
+              href={`/courses/api/course/${courseId}`}
+            >
+              Download Course
+            </Button>
             <Button href={`/courses/course/${courseId}`} variant="outlined">
               Go to Course
             </Button>
@@ -333,7 +340,7 @@ export const CourseEditor = ({
                                 "items",
                                 itemIndex,
                               ],
-                              newValue
+                              { ...item, ...newValue }
                             )
                           )
                         }}
