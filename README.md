@@ -3,7 +3,7 @@
 Dataset annotators often need extensive instructions to understand how to label
 or annotate a dataset. Universal Data Tool Courseware allows you to quickly create
 training for annotators with dataset-specific instructions and exercises. You can
-use it online at [courses.universaldatatool.com](https://courses.universaldatatool.com).
+use it online at [universaldatatool.com/courses](https://universaldatatool.com/courses).
 
 > The [Universal Data Tool](https://github.com/UniversalDataTool/universal-data-tool) (UDT) is an
 > open-source web or downloadable tool for labeling data for usage in machine

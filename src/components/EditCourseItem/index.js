@@ -41,6 +41,7 @@ import { useDebounce } from "react-use"
 import StudentsDialog from "../StudentsDialog"
 import withSolutionOptions from "./with-solution-options"
 import JSONEditor from "../JSONEditor"
+import useEventCallback from "use-event-callback"
 
 const ItemEditContainer = styled(Paper)({
   display: "flex",
@@ -50,7 +51,7 @@ const ItemEditContainer = styled(Paper)({
   marginTop: 32,
 })
 
-const EditCourseItem = memo(
+const EditCourseItemInnerMemo = memo(
   ({ dataset, item, onChange, onMove, onDelete }) => {
     const [currentTab, setTab] = useState(0)
     const tabs = [
@@ -153,7 +154,34 @@ const EditCourseItem = memo(
       </ItemEditContainer>
     )
   },
-  (next, prev) => next.item === prev.item && next.key === prev.key
+  (next, prev) => next.item === prev.item
 )
+
+const EditCourseItem = ({
+  dataset,
+  item,
+  onChange: onChangeProp,
+  onMove: onMoveProp,
+  onDelete: onDeleteProp,
+}) => {
+  // Bind to latest func without component rerenders
+  const onChange = useEventCallback(onChangeProp)
+  const onMove = useEventCallback(onMoveProp)
+  const onDelete = useEventCallback(onDeleteProp)
+  return (
+    <EditCourseItemInnerMemo
+      dataset={dataset}
+      item={item}
+      onChange={onChange}
+      onMove={onMove}
+      onDelete={onDelete}
+    />
+  )
+}
+
+// memo(
+// com
+//   (next, prev) => next.item === prev.item
+// )
 
 export default EditCourseItem

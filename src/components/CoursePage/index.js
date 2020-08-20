@@ -14,7 +14,9 @@ export const CoursePage = () => {
     if (!course_id) return
     async function getCourse() {
       const response = await fetch(
-        `/courses/api/course/${course_id}`
+        `/courses/api/course/${course_id}?avoid_cache=${Math.random()
+          .toString(36)
+          .slice(-4)}`
       ).then((r) => r.json())
       setCourse(response)
     }

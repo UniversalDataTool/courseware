@@ -29,22 +29,25 @@ export const EditCoursePage = () => {
               name: "Introduction",
               items: [
                 {
+                  id: "1",
                   markdown:
-                    "# Some introduction text\n\nYou can click the Edit tab on any item to edit it's content. You can create new items using the little add icon at the bottom of items.\n\nIf you create tests or exercises, they're required to be completed before someone can move on from their current section.\n\nIncluding images in your markdown is cool but we don't host images so try throwing them up on imgur or AWS S3.",
+                    "# About this dataset\n\nIt's a good idea to start a course by defining some of the things that labelers will need to know about the dataset, e.g. maybe you should tell them the motivation behind the labeling of this dataset.\n\nYou can click the Edit tab on any item to edit it's content. You can create new items using the little add icon at the bottom of items.\n\nIf you create tests or exercises, they're required to be completed before someone can move on from their current section.\n\nIncluding images in your markdown is cool but we don't host images so try throwing them up on imgur or AWS S3.",
                 },
                 {
+                  id: "2",
                   question: {
                     type: "radiogroup",
-                    title: "How do you add a new item?",
+                    title: "What is this dataset used for?",
                     choices: [
-                      "The little add icon",
-                      "You navigate away from the page",
-                      "You star this project on Github",
+                      "Identifying the sentiment of cats",
+                      "Classifying different kinds of fruits for machine conveyer systems",
+                      "Something else!",
                     ],
                   },
                   answerIndex: 2,
                 },
                 {
+                  id: "3",
                   dataset: {
                     interface: response.dataset.interface,
                     samples: (response.dataset.samples || []).slice(0, 1),

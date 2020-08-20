@@ -132,7 +132,7 @@ const LandingPage = () => {
               justifyContent="flex-end"
             >
               <GitHubButton
-                href="https://github.com/UniversalDataTool/courseware"
+                href="https://github.com/UniversalDataTool/universal-data-tool"
                 data-size="large"
                 data-show-count="true"
                 aria-label="Star universaldatatool/courseware on GitHub"
