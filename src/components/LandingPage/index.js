@@ -122,7 +122,10 @@ const LandingPage = () => {
             <HeroTryButton href="/courses/create" variant="contained">
               Create a Course
             </HeroTryButton>
-            <HeroTryButton href="/courses/course/example" variant="contained">
+            <HeroTryButton
+              href="/courses/course/e766b58d-4461-4e38-8190-300bf0690073"
+              variant="contained"
+            >
               Try an Example Course
             </HeroTryButton>
             <Box
@@ -210,7 +213,7 @@ const LandingPage = () => {
               Create a Course
             </TryButton>
             <TryButton
-              href="/courses/course/example"
+              href="/courses/course/e766b58d-4461-4e38-8190-300bf0690073"
               variant="contained"
               color="primary"
             >
