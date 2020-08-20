@@ -112,7 +112,7 @@ export const CourseEditor = ({
       title: "Untitled Course",
     },
   } = dataset
-  useDebounce(() => onChangeDataset(dataset), 10000, [dataset])
+  useDebounce(() => onChangeDataset(dataset), 5000, [dataset])
 
   return (
     <Container>
@@ -278,9 +278,8 @@ export const CourseEditor = ({
                     }}
                   />
                   {(section.items || []).map((item, itemIndex) => (
-                    <Fragment key={itemIndex}>
+                    <Fragment key={item.id || itemIndex}>
                       <EditCourseItem
-                        key={item.id || itemIndex}
                         item={item}
                         dataset={dataset}
                         onMove={(direction) => {

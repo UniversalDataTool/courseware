@@ -1,45 +1,11 @@
-import React, {
-  useState,
-  useMemo,
-  Fragment,
-  memo,
-  useReducer,
-  useEffect,
-} from "react"
-import CenteredContent from "../CenteredContent"
+import React, { useReducer } from "react"
+import { styled, Box, colors, Button, IconButton } from "@material-ui/core"
 import {
-  styled,
-  Box,
-  Typography,
-  colors,
-  Grid,
-  TextField,
-  Paper,
-  Tabs,
-  Button,
-  Tab,
-  IconButton,
-  Tooltip,
-} from "@material-ui/core"
-import {
-  KeyboardArrowUp as KeyboardArrowUpIcon,
-  KeyboardArrowDown as KeyboardArrowDownIcon,
   LibraryAdd as LibraryAddIcon,
-  Visibility as VisibilityIcon,
-  CenterFocusStrong as CenterFocusStrongIcon,
-  VisibilityOff as VisibilityOffIcon,
   Close as CloseIcon,
 } from "@material-ui/icons"
-import CourseItem from "../CourseItem"
-import { from as makeImmutable, setIn } from "seamless-immutable"
-import MarkdownEditor from "../MarkdownEditor"
-import EditSimpleQuestion from "../EditSimpleQuestion"
-import SelectSamplesFromDataset from "../SelectSamplesFromDataset"
-import ConfigureTest from "../ConfigureTest"
-import UniversalDataViewer from "universal-data-tool/components/UniversalDataViewer"
-import { useDebounce } from "react-use"
-import StudentsDialog from "../StudentsDialog"
-import JSONEditor from "../JSONEditor"
+
+const getRandomId = () => Math.random().toString(36).slice(-5)
 
 const NewItemOption = styled(Button)({
   margin: 8,
@@ -65,7 +31,10 @@ const NewItemCreator = ({
         <Box marginTop={2}>
           <NewItemOption
             onClick={() => {
-              onAddItem({ markdown: "# Empty Markdown Item" })
+              onAddItem({
+                id: getRandomId(),
+                markdown: "# Empty Markdown Item",
+              })
               toggleOpen()
             }}
             variant="outlined"
@@ -75,6 +44,7 @@ const NewItemCreator = ({
           <NewItemOption
             onClick={() => {
               onAddItem({
+                id: getRandomId(),
                 question: {
                   type: "radiogroup",
                   title: "Some question title",
@@ -91,6 +61,7 @@ const NewItemCreator = ({
           <NewItemOption
             onClick={() => {
               onAddItem({
+                id: getRandomId(),
                 dataset: {
                   interface: dataset.interface,
                   samples: [],
@@ -105,6 +76,7 @@ const NewItemCreator = ({
           <NewItemOption
             onClick={() => {
               onAddItem({
+                id: getRandomId(),
                 dataset: {
                   interface: dataset.interface,
                   samples: [],

@@ -18124,10 +18124,10 @@ ua-parser-js@^0.7.18:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
 
-udt-iou-error@^0.0.1-beta.1:
-  version "0.0.1-beta.1"
-  resolved "https://registry.yarnpkg.com/udt-iou-error/-/udt-iou-error-0.0.1-beta.1.tgz#d6541e027cf1746f86009cc47dccbcdcdd755b92"
-  integrity sha512-9uXdKAv4WGqc6H9X7S7ATZ4uTsL4NdEnF0vRvf+l/c+eELFpbGua+Dq7V6TcW7yHF6/e/Qhz8VuqN3jttftbHw==
+udt-iou-error@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/udt-iou-error/-/udt-iou-error-0.1.0.tgz#ad2795ea0410126dbb862969ea51c9beec18236b"
+  integrity sha512-acTIY+BPKadxn828DrHo4NSzITnP2e8EgaRmwEVIhRYq4Ox9UHgCT1pdg3JJW+DBmnFhE5tL96quF+tdnfu+Cg==
   dependencies:
     polygon-tools "^0.4.8"
 

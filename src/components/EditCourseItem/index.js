@@ -52,10 +52,6 @@ const ItemEditContainer = styled(Paper)({
 
 const EditCourseItem = memo(
   ({ dataset, item, onChange, onMove, onDelete }) => {
-    if (!item.id) {
-      onChange(item.set("id", Math.random().toString(36).slice(-4)))
-    }
-
     const [currentTab, setTab] = useState(0)
     const tabs = [
       "Preview",
