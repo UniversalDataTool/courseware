@@ -4,7 +4,7 @@ const query = require("micro-query")
 
 module.exports = async (req, res) => {
   const db = await getDB()
-  const { course_id } = { ...(req.query || {}), ...query(req) }
+  const { course_id, download } = { ...(req.query || {}), ...query(req) }
 
   if (!course_id) {
     return send(res, 400, "course_id is required")
@@ -19,12 +19,15 @@ module.exports = async (req, res) => {
 
   switch (req.method) {
     case "GET": {
-      res.setHeader(
-        "Content-Disposition",
-        `attachment; filename="${
-          (course.dataset.training || {}).title || "course"
-        }.udt.json"`
-      )
+      if (download) {
+        res.setHeader(
+          "Content-Disposition",
+          `attachment; filename="${
+            (course.dataset.training || {}).title || "course"
+          }.udt.json"`
+        )
+        return send(res, 200, course.dataset)
+      }
       return send(res, 200, course)
     }
     case "PUT": {

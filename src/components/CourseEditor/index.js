@@ -130,7 +130,7 @@ export const CourseEditor = ({
             <Button
               download
               variant="outlined"
-              href={`/courses/api/course/${courseId}`}
+              href={`/courses/api/course/${courseId}?download=true`}
             >
               Download Course
             </Button>

@@ -23,6 +23,7 @@ import UniversalDataViewer from "universal-data-tool/components/UniversalDataVie
 import withSolutionOptions from "./with-solution-options"
 import JSONEditor from "../JSONEditor"
 import useEventCallback from "use-event-callback"
+import { ErrorBoundary } from "react-error-boundary"
 
 const ItemEditContainer = styled(Paper)({
   display: "flex",
@@ -132,6 +133,18 @@ const EditCourseItemInnerMemo = memo(
   (next, prev) => next.item === prev.item
 )
 
+const ErrorFallback = ({ error, item, onChange }) => {
+  return (
+    <ItemEditContainer>
+      <Box color="red">{error.toString()}</Box>
+      <JSONEditor
+        json={{ ...item, id: undefined }}
+        onSave={(newJSON) => onChange(newJSON)}
+      />
+    </ItemEditContainer>
+  )
+}
+
 const EditCourseItem = ({
   dataset,
   item,
@@ -144,13 +157,19 @@ const EditCourseItem = ({
   const onMove = useEventCallback(onMoveProp)
   const onDelete = useEventCallback(onDeleteProp)
   return (
-    <EditCourseItemInnerMemo
-      dataset={dataset}
-      item={item}
-      onChange={onChange}
-      onMove={onMove}
-      onDelete={onDelete}
-    />
+    <ErrorBoundary
+      fallbackRender={(props) => (
+        <ErrorFallback {...props} item={item} onChange={onChange} />
+      )}
+    >
+      <EditCourseItemInnerMemo
+        dataset={dataset}
+        item={item}
+        onChange={onChange}
+        onMove={onMove}
+        onDelete={onDelete}
+      />
+    </ErrorBoundary>
   )
 }
 
