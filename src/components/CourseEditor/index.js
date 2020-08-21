@@ -259,7 +259,7 @@ export const CourseEditor = ({
                             }
                             setDataset(
                               dataset.setIn(
-                                ["sections"],
+                                ["training", "sections"],
                                 [
                                   ...sections.slice(0, sectionIndex),
                                   ...sections.slice(sectionIndex + 1),
