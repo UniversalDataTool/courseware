@@ -1,8 +1,12 @@
 const getDB = require("../../../lib/database")
 const { send, json } = require("micro")
 const query = require("micro-query")
+const cors = require("micro-cors")()
 
-module.exports = async (req, res) => {
+module.exports = cors(async (req, res) => {
+  if (req.method === "OPTIONS") {
+    return send(res, 200)
+  }
   const db = await getDB({ migrate: true })
   const { course_id, email } = { ...(req.query || {}), ...query(req) }
 
@@ -22,4 +26,4 @@ module.exports = async (req, res) => {
     default:
       return send(res, 405)
   }
-}
+})
