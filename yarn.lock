@@ -11838,11 +11838,6 @@ libnpmteam@^1.0.1:
     get-stream "^4.0.0"
     npm-registry-fetch "^4.0.0"
 
-libtess@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/libtess/-/libtess-1.2.2.tgz#173eb52a1a57a0238fe48f05d12245074497f898"
-  integrity sha1-Fz61KhpXoCOP5I8F0SJFB0SX+Jg=
-
 liftoff@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/liftoff/-/liftoff-3.1.0.tgz#c9ba6081f908670607ee79062d700df062c52ed3"
@@ -14011,13 +14006,6 @@ polished@^3.4.4:
   integrity sha512-VwhC9MlhW7O5dg/z7k32dabcAFW1VI2+7fSe8cE/kXcfL7mVdoa5UxciYGW2sJU78ldDLT6+ROEKIZKFNTnUXQ==
   dependencies:
     "@babel/runtime" "^7.9.2"
-
-polygon-tools@^0.4.8:
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/polygon-tools/-/polygon-tools-0.4.8.tgz#07ea8f2c6dd09ebe707b9746dd7b7d9adb78b24a"
-  integrity sha512-eqrIDFkUfBaz7E3DGDp6z/D3D+n5pMBORuFeHmfJJ3sW0Ivvhi+gDCTYwy+1ANtEXNw3Fko0k1Ozjiv0MsSpAg==
-  dependencies:
-    libtess "^1.2.2"
 
 popper.js@1.16.1-lts:
   version "1.16.1-lts"
@@ -18131,12 +18119,10 @@ ua-parser-js@^0.7.18:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
 
-udt-iou-error@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/udt-iou-error/-/udt-iou-error-0.1.0.tgz#ad2795ea0410126dbb862969ea51c9beec18236b"
-  integrity sha512-acTIY+BPKadxn828DrHo4NSzITnP2e8EgaRmwEVIhRYq4Ox9UHgCT1pdg3JJW+DBmnFhE5tL96quF+tdnfu+Cg==
-  dependencies:
-    polygon-tools "^0.4.8"
+udt-iou-error@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/udt-iou-error/-/udt-iou-error-0.1.9.tgz#593492f3e7a28ce9dc7df0b55507e53cafecafba"
+  integrity sha512-dlLePWbhLj/lR8I3I3YmRmumv1aF+Vtdes1RSCeQewk3gjvZwTqVGDs4DHYql5O6OY+kwE82yk19INkh6CBoNw==
 
 uid-number@0.0.6:
   version "0.0.6"

@@ -177,6 +177,7 @@ export const TestCourseItem = ({ test, dataset, onCompleteTest }) => {
         <Box>
           {isTakingTest && (
             <UniversalDataViewer
+              key={currentSampleIndex}
               dataset={datasetWithoutAnnotations}
               sampleIndex={currentSampleIndex}
               onSaveTaskOutputItem={(sampleIndex, answer) => {

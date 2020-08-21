@@ -1,5 +1,5 @@
 import isEqual from "lodash/isEqual"
-import getIOU from "udt-iou-error"
+import { getIOU } from "udt-iou-error"
 import { asMutable } from "seamless-immutable"
 
 export default (test, solution, answer) => {
