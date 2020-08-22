@@ -21,7 +21,10 @@ export default (test, solution, answer) => {
       1 -
       getIOU(
         asMutable(solution || [], { deep: true }),
-        asMutable(answer || [], { deep: true })
+        asMutable(answer || [], { deep: true }),
+        {
+          borderMargin: test.allowedMarginError || 0.005,
+        }
       )
     if (iouError > (test.iouErrorThreshold || 0.1)) {
       return `The pixels you classified are ${(iouError * 100).toFixed(
