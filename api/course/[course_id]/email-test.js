@@ -20,6 +20,7 @@ module.exports = cors(async (req, res) => {
           await db("course_completion")
             .where({ course_id, email })
             .select("course_completion_id")
+	    .first()
         ),
       })
     }

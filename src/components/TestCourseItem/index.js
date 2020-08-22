@@ -209,7 +209,13 @@ export const TestCourseItem = ({ test, dataset, onCompleteTest }) => {
                   )
                   // setCurrentSampleIndex(currentSampleIndex - 1)
                 } else if (!action) {
-                  finishTest()
+                  if (
+                    window.confirm(
+                      'This will complete the exercise/test. You should only do this after you\'ve completed all the samples by hitting "Next", are you sure you want to finish?'
+                    )
+                  ) {
+                    finishTest()
+                  }
                 }
               }}
             />

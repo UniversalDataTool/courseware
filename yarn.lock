@@ -18149,10 +18149,10 @@ ua-parser-js@^0.7.18:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
 
-udt-iou-error@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/udt-iou-error/-/udt-iou-error-0.2.0.tgz#62c0b82fceab7fd49ffd84d0609b7b0471db2050"
-  integrity sha512-69Tv1ajaM3caMEDklHQHxkxZxQ0SRitsNf5qSpHzhZbj55F2d1Ma6204VXxjaZzgKYsnUkfkH7SwU/e4glCELg==
+udt-iou-error@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/udt-iou-error/-/udt-iou-error-0.2.2.tgz#ad9183d0b9e1a1ad1813fa4e79c39479759bc992"
+  integrity sha512-NdkzQTytXKLedWBK0xnPy2FjuKX+C0cGzVL2j4aDMRKgpXki19FtuLWSl9y10SFn1SGS1eLFMtKklqWMmTk+kw==
   dependencies:
     polygon-offset "^0.3.1"
 
