@@ -32,13 +32,14 @@ vc dev
 
 ### Pages
 
-| Page URL                                   | Description                                  |
-| ------------------------------------------ | -------------------------------------------- |
-| `/`                                        | Landing Page                                 |
-| `/create`                                  | Create Course / Upload UDT File              |
-| `/course/[course_id]`                      | Take a course                                |
-| `/course/[course_id]/edit?editKey=XXX`     | Edit a course                                |
-| `/course/[course_id]/students?editKey=XXX` | View students that have completed the course |
+| Page URL                                   | Description                                          |
+| ------------------------------------------ | ---------------------------------------------------- |
+| `/`                                        | Landing Page                                         |
+| `/create`                                  | Create Course / Upload UDT File                      |
+| `/course/[course_id]`                      | Take a course                                        |
+| `/course/[course_id]/edit?editKey=XXX`     | Edit a course                                        |
+| `/course/[course_id]/students?editKey=XXX` | View students that have completed the course         |
+| `/course/[course_id]/email-test?email=XXX` | See if a student has successfully completed a course |
 
 ### Endpoints
 
